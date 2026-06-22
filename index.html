@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今天中午吃什么</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="hero-copy"><div class="eyebrow">LUNCH, DECIDED.</div><h1>今天中午<br><em>吃什么？</em></h1><p>不连平台，不等接口。告诉我今天的胃口，三秒钟替你做决定。</p></div>
+      <div class="hero-art" aria-hidden="true"><span class="steam steam-one"></span><span class="steam steam-two"></span><span class="steam steam-three"></span><div class="bowl"><span></span></div><div class="sun">午</div></div>
+    </header>
+
+    <section class="panel location-panel">
+      <div class="location-heading"><div class="location-pin" aria-hidden="true">⌖</div><div><div class="eyebrow">MY LUNCH SPOT</div><h2>从哪里出发吃午饭？</h2><p id="locationSummary">输入商场、写字楼、园区或地铁站，帮你找附近餐厅。</p></div></div>
+      <div class="location-form">
+        <input id="locationInput" autocomplete="street-address" placeholder="例如：上海静安寺 / 深圳科技园">
+        <select id="radius" aria-label="搜索半径"><option value="1000">1 公里</option><option value="2000">2 公里</option><option value="3000" selected>3 公里</option><option value="5000">5 公里</option></select>
+        <button id="searchNearby" class="location-button">搜索周边</button>
+      </div>
+      <div class="location-note"><span>定位文字仅在点击搜索时发送给 OpenStreetMap，用于查找公开餐饮信息。</span><a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></div>
+    </section>
+
+    <section class="panel setup stable-setup">
+      <div class="field taste-field">
+        <label><span class="step">01</span> 今天想吃什么感觉</label>
+        <div id="tastes" class="chips"></div>
+      </div>
+      <div class="field budget-field">
+        <label for="budget"><span class="step">02</span> 午餐预算</label>
+        <select id="budget">
+          <option value="999">不限</option>
+          <option value="20">20 元以内</option>
+          <option value="30" selected>30 元以内</option>
+          <option value="40">40 元以内</option>
+          <option value="60">60 元以内</option>
+        </select>
+      </div>
+      <button id="recommend" class="primary">给我三个答案</button>
+    </section>
+
+    <section id="status" class="status" hidden></section>
+    <section id="results" class="results" hidden>
+      <div class="section-title"><div><span>今日候选</span><h2>别纠结，就吃这些</h2></div><button id="again" class="ghost">换一组</button></div>
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section class="sources library">
+      <div class="section-title"><div><span>你的选择池</span><h2>午餐候选库</h2></div><div class="library-tools"><strong id="libraryCount"></strong><button id="toggleLibrary" class="ghost">查看全部</button></div></div>
+      <p id="libraryDescription">还没有定位时使用内置午餐；添加定位后会优先推荐周边餐厅。</p>
+      <div class="library-form">
+        <input id="itemName" placeholder="餐厅或菜品名称">
+        <input id="itemTags" placeholder="标签，如：清淡 热乎 米饭">
+        <input id="itemPrice" type="number" min="1" max="999" placeholder="价格">
+        <button id="addItem" class="ghost">加入候选库</button>
+      </div>
+      <div id="customItems" class="custom-items"></div>
+    </section>
+
+    <section class="history">
+      <div class="section-title"><div><span>最近决定</span><h2>午饭足迹</h2></div><button id="clearHistory" class="ghost">清空</button></div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>
