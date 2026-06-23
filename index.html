@@ -3,65 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>今天中午吃什么</title>
+  <title>今日本命饭</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <header class="hero">
-      <div class="hero-copy"><div class="eyebrow">LUNCH, DECIDED.</div><h1>今天中午<br><em>吃什么？</em></h1><p>先告诉我你从哪里出发，再选今天的胃口和预算。我会从附近正餐里筛掉重复门店，给你三个更像午饭的答案。</p></div>
-      <div class="hero-art" aria-hidden="true"><span class="steam steam-one"></span><span class="steam steam-two"></span><span class="steam steam-three"></span><div class="bowl"><span></span></div><div class="sun">午</div></div>
-    </header>
+  <main class="machine-page">
+    <section class="machine-hero view active" id="viewIntro">
+      <div class="ticker" id="ticker">今日饭运加载中...</div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="stamp-mini">LUNCH FORTUNE</div>
+          <h1>中午<br><em>吃什么？</em></h1>
+          <p>你不是缺选择，你是缺一个替你背锅的按钮。现在有了。</p>
+        </div>
 
-    <section class="panel location-panel">
-      <div class="location-heading"><div class="location-pin" aria-hidden="true">01</div><div><div class="eyebrow">START HERE</div><h2>先填定位，确定今天从哪儿吃</h2><p id="locationSummary">可以精确到城市、区、路名和门牌号，例如“上海市静安区南京西路 1266 号”。</p></div></div>
-      <div class="location-form">
-        <input id="locationInput" autocomplete="street-address" placeholder="例如：北京市朝阳区建国路 88 号 / 深圳市南山区科苑南路">
-        <select id="radius" aria-label="搜索半径"><option value="800">800 米</option><option value="1000">1 公里</option><option value="2000" selected>2 公里</option><option value="3000">3 公里</option></select>
-        <button id="searchNearby" class="location-button">查找附近正餐</button>
+        <div class="machine" id="machine">
+          <div class="halo"></div>
+          <div class="ticket ticket-a">摸鱼</div>
+          <div class="ticket ticket-b">续命</div>
+          <div class="ticket ticket-c">碳水</div>
+          <div class="bowl">
+            <div class="steam steam-a"></div>
+            <div class="steam steam-b"></div>
+            <div class="steam steam-c"></div>
+            <div class="bowl-rim"></div>
+            <div class="bowl-body">
+              <span>饭签机</span>
+            </div>
+          </div>
+          <div class="machine-hint" id="machineHint">今日饭运待开签</div>
+        </div>
       </div>
-      <div class="location-note"><span>定位越具体，结果越接近真实周边。定位文字仅在点击搜索时发送给 OpenStreetMap，用于查找公开餐饮信息。</span><a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></div>
     </section>
 
-    <section class="panel setup stable-setup">
-      <div class="field taste-field">
-        <label><span class="step">02</span> 再选今天想吃什么感觉</label>
-        <div id="tastes" class="chips"></div>
+    <section class="stickers view active" id="viewMood">
+      <div class="section-title">
+        <span>01</span>
+        <h2>选择你的今日症状</h2>
       </div>
-      <div class="field budget-field">
-        <label for="budget"><span class="step">03</span> 午餐预算</label>
-        <select id="budget">
-          <option value="999">不限</option>
-          <option value="20">20 元以内</option>
-          <option value="30" selected>30 元以内</option>
-          <option value="40">40 元以内</option>
-          <option value="60">60 元以内</option>
-        </select>
-      </div>
-      <button id="recommend" class="primary">从附近给我三个答案</button>
+      <div class="sticker-grid" id="moodGrid"></div>
     </section>
 
-    <section id="status" class="status" hidden></section>
-    <section id="results" class="results" hidden>
-      <div class="section-title"><div><span>今日候选</span><h2>别纠结，就吃这些</h2></div><button id="again" class="ghost">换一组</button></div>
-      <div id="cards" class="cards"></div>
+    <section class="summon view" id="viewSummon">
+      <div class="diagnosis" id="diagnosis">确诊：午饭选择困难。</div>
+      <button class="draw-btn" id="drawBtn">开饭签</button>
     </section>
 
-    <section class="sources library">
-      <div class="section-title"><div><span>你的选择池</span><h2>午餐候选库</h2></div><div class="library-tools"><strong id="libraryCount"></strong><button id="toggleLibrary" class="ghost">查看全部</button></div></div>
-      <p id="libraryDescription">还没有定位时使用内置午餐；添加定位后会优先推荐周边正餐，并过滤咖啡、奶茶、饮料、甜品和重复连锁门店。</p>
-      <div class="library-form">
-        <input id="itemName" placeholder="餐厅或菜品名称">
-        <input id="itemTags" placeholder="标签，如：清淡 热乎 米饭">
-        <input id="itemPrice" type="number" min="1" max="999" placeholder="价格">
-        <button id="addItem" class="ghost">加入候选库</button>
+    <section class="ritual" id="ritual" hidden>
+      <div class="ritual-light"></div>
+      <div class="flying-slip slip-1"></div>
+      <div class="flying-slip slip-2"></div>
+      <div class="flying-slip slip-3"></div>
+      <div class="ritual-text" id="ritualText">正在让玄学背锅...</div>
+    </section>
+
+    <section class="fortune-result view" id="viewResult">
+      <article class="fortune-slip" id="fortuneSlip">
+        <div class="paper-grain"></div>
+        <div class="result-stamp">饭运<br>显灵</div>
+        <div class="result-label">今日本命饭</div>
+        <h2 id="mealName">黄焖鸡米饭</h2>
+        <div class="power-badge" id="powerBadge">摸鱼续航 +20%</div>
+        <p id="verdict">不是我说你，不吃饱哪来的力气摸鱼。</p>
+        <div class="charm-row">
+          <span id="luckyDo">宜：碳水续命</span>
+          <span id="luckyDont">忌：反复横跳</span>
+          <span id="luckyFlavor">幸运调味：葱花</span>
+        </div>
+        <div class="backup" id="backupLine">备胎饭：热汤面 / 麻辣烫</div>
+        <div class="action-row">
+          <button id="copyBtn">复制去下单</button>
+          <button id="acceptBtn">收下这碗命</button>
+          <button id="redrawBtn">不服，重摇</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="recent view" id="viewHistory">
+      <div class="section-title">
+        <span>签</span>
+        <h2>最近收下的饭命</h2>
       </div>
-      <div id="customItems" class="custom-items"></div>
-    </section>
-
-    <section class="history">
-      <div class="section-title"><div><span>最近决定</span><h2>午饭足迹</h2></div><button id="clearHistory" class="ghost">清空</button></div>
-      <div id="historyList" class="history-list"></div>
+      <div id="historyList"></div>
     </section>
   </main>
   <script src="dashboard.js"></script>
